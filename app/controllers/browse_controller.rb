@@ -22,4 +22,19 @@ class BrowseController < ApplicationController
 
     def decline
     end
+
+    # def conversation
+    #     @profile = Account.find_by_id(params[:id])
+
+    #     # if @profile.present?
+    #     #     #get convos for user
+    #     #     # respond_to do |format|
+    #     #     #     format.js{
+    #     #     #         render "browse/conversation"
+    #     #     #     }
+    #     #     # end
+    #     #     render partial: "browse/conversation"
+    #     # end
+    # end
+
 end

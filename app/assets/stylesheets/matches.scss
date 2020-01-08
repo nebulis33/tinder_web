@@ -14,3 +14,29 @@
         font-weight: bold;
     }
 }
+
+#conversation {
+    display: none;
+    width: 96%;
+    height: 96%;
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    z-index: 100;
+    background: #fff;
+    padding: 30px;
+
+    .top-bar{
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 20px;
+    }
+
+    .close-conversation {
+        cursor: pointer;
+        color: gray;
+
+        &:hover {
+            color: black;
+        }
+    }
+}

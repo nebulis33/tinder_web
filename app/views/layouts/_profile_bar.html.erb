@@ -1,5 +1,5 @@
 <div class="profile-bar">
     <%= link_to "Sign Out", destroy_account_session_path, method: :delete, class: "float-right sign-out mt-2" %>
-    <%= image_tag current_account.images.first, height:'50px', width:'50px', class:'profile-thumb rounded-circle mr-2' %>
+    <%= image_tag current_account.images.first, height:'50px', width:'50px', class:'profile-thumb rounded-circle mr-2'%>
     <%= link_to "My Profile", edit_account_registration_path, class: 'my-profile' %>
 </div>
