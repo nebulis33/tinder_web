@@ -1,0 +1,16 @@
+.match-tile{
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    position: relative;
+
+    p {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        font-weight: bold;
+    }
+}

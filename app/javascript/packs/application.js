@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 
-require("packs/slides")
+require("packs/browse")
 // import "./slides.js";
 
 import "@fortawesome/fontawesome-free/js/all";
