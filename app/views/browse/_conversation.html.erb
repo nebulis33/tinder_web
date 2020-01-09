@@ -9,25 +9,19 @@
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <p>Its been <%= time_ago_in_words @profile.created_at %> since you two matched.</p>
-            <%= image_tag @profile.images.first, height:'100px', width:'100px', class:'rounded-circle' %>
-            <p>Send them a message!</p>
+            <div id="initiate-conversation">
+                <p>Its been <%= time_ago_in_words @profile.created_at %> since you two matched.</p>
+                <%= image_tag @profile.images.first, height:'100px', width:'100px', class:'rounded-circle' %>
+                <p>Send them a message!</p>
+            </div>
+
+            <div id="conversation_messages">
+            
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <%= form_with model: @conversation do |f| %>
-                <%= f.hidden_field :recipient_id, value: @profile.id %>
-                <div class="input-group">
-                    <%= f.fields_for :messages, @message do |message_form| %>
-                        <%= message_form.text_field :body, placeholder: "Try... 'Whats your favorite food?'", class: "form-control form-control-lg"%>
-                    <% end %>
-                    <%# <input type="text" name="message" id="" placeholder='Try... "Whats your favorite food?"' class="form-control"> %>
-
-                    <div class="input-group-append">
-                        <input type="submit" value="Send" class="btn btn-success">
-                    </div>
-                </div>
-            <% end %>
+                <%= render 'browse/new_conversation' %>
         </div>
     </div>

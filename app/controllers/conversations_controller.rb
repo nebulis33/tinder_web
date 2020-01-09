@@ -12,6 +12,19 @@ class ConversationsController < ApplicationController
         end
     end
 
+    def update
+        @conversation = Conversation.find(params[:id])
+
+        if @conversation.update!(conversation_params)
+            respond_to do |format|
+                format.js {
+                    @messages = @conversation.messages
+                    render 'browse/conversation_messages'
+                }
+            end
+        end
+    end
+
     private
 
         def conversation_params
