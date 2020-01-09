@@ -6,16 +6,16 @@ $(function(){
     $(".match-tile").on("click", function(){
         var account_id = $(this).data("id")
         
-        // $.ajax({
-        //     url: "/get/conversation/"+account_id,
-        //     method: "post",
-        //     dataType: "ajax",
-        // })
+        $.ajax({
+            url: "/get/conversation/"+account_id,
+            method: "post",
+            dataType: "script",
+        })
 
-        $("#conversation").show();
+        // $("#conversation").show();
     });
 
-    $(".close-conversation").on("click", function(){
+    $("#close-conversation").on("click", function(){
         $("#conversation").hide();
     });
 

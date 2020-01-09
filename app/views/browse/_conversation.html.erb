@@ -2,27 +2,32 @@
 
     <div class='row'>
         <div class="col-12 top-bar">
-            <i class="fa fa-times float-right fa-2x close-conversation"></i>
-            <%= image_tag @users.first.images.first, height:'50px', width:'50px', class:'@users.first-thumb rounded-circle mr-2' %>
-            <p class="text-muted"><span>You and <%= @users.first.first_name %></span> matched on <%= @users.first.created_at %></p>
+            <i class="fa fa-times float-right fa-2x" id="close-conversation"></i>
+            <%= image_tag @profile.images.first, height:'50px', width:'50px', class:'profile-thumb rounded-circle mr-2' %>
+            <p class="text-muted"><span>You and <%= @profile.first_name %></span> matched on <%= @profile.created_at %></p>
         </div>
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <p>Its been <%= time_ago_in_words @users.first.created_at %> since you two matched.</p>
-            <%= image_tag @users.first.images.first, height:'100px', width:'100px', class:'rounded-circle' %>
+            <p>Its been <%= time_ago_in_words @profile.created_at %> since you two matched.</p>
+            <%= image_tag @profile.images.first, height:'100px', width:'100px', class:'rounded-circle' %>
             <p>Send them a message!</p>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <form>
+            <%= form_with model: @conversation do |f| %>
+                <%= f.hidden_field :recipient_id, value: @profile.id %>
                 <div class="input-group">
-                    <input type="text" name="message" id="" placeholder='Try... "Whats your favorite food?"' class="form-control">
+                    <%= f.fields_for :messages, @message do |message_form| %>
+                        <%= message_form.text_field :body, placeholder: "Try... 'Whats your favorite food?'", class: "form-control form-control-lg"%>
+                    <% end %>
+                    <%# <input type="text" name="message" id="" placeholder='Try... "Whats your favorite food?"' class="form-control"> %>
+
                     <div class="input-group-append">
                         <input type="submit" value="Send" class="btn btn-success">
                     </div>
                 </div>
-            </form>
+            <% end %>
         </div>
     </div>

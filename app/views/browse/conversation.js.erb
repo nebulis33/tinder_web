@@ -1,0 +1,6 @@
+
+$("#conversation").html("<%= escape_javascript(render partial: 'browse/conversation') %>").show();
+
+$(".top-bar").on("click", '#close-conversation', function(){
+        $("#conversation").hide();
+    });
