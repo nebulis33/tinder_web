@@ -1,10 +1,7 @@
 class BrowseController < ApplicationController
     def browse
-        liked_account_ids = Like.where(account_id: current_account.id).pluck(:liked_account_id)
-        liked_account_ids << current_account.id
-
-        @users = Account.includes(:images_attachments).where.not(id: liked_account_ids).limit(10)
-        @matches = current_account.matches
+        @users = Match.recomended_matches_for(current_account.id)
+        @matches = Match.matches_for(current_account.id)
         @conversations = Conversation.includes(:messages).where("conversations.sender_id = ? OR conversations.recipient_id = ?", current_account.id, current_account.id)
     end
 
