@@ -31,6 +31,14 @@
         padding-bottom: 20px;
     }
 
+    .conversation-message {
+        background-color: lightgray;
+
+        p {
+            margin: 0;
+        }
+    }
+
     #close-conversation {
         cursor: pointer;
         color: gray;

@@ -3,7 +3,7 @@ class BrowseController < ApplicationController
         liked_account_ids = Like.where(account_id: current_account.id).pluck(:liked_account_id)
         liked_account_ids << current_account.id
 
-        @users = Account.where.not(id: liked_account_ids)
+        @users = Account.includes(:images_attachments).where.not(id: liked_account_ids)
         @matches = current_account.matches
     end
 
@@ -31,7 +31,7 @@ class BrowseController < ApplicationController
         conversation = Conversation.between(id, current_account.id)
 
         @conversation = conversation.size > 0 ? conversation.first : Conversation.new
-        @messages = @conversation.messages if @conversation.persisted?
+        @messages = @conversation.messages.includes(account: :images_attachments) if @conversation.persisted?
         @message = @conversation.messages.build
 
         if @profile.present?
