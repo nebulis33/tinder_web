@@ -1,27 +1,26 @@
-
-
-    <div class='row'>
-        <div class="col-12 top-bar">
-            <i class="fa fa-times float-right fa-2x" id="close-conversation"></i>
-            <%= image_tag @profile.images.first, height:'50px', width:'50px', class:'profile-thumb rounded-circle mr-2' %>
-            <p class="text-muted"><span>You and <%= @profile.first_name %></span> matched on <%= @profile.created_at %></p>
-        </div>
+<div class='row'>
+    <div class="col-12 top-bar">
+        <i class="fa fa-times float-right fa-2x" id="close-conversation"></i>
+        <%= image_tag @profile.images.first, height:'50px', width:'50px', class:'profile-thumb rounded-circle mr-2' %>
+        <p class="text-muted"><span>You and <%= @profile.first_name %></span> matched on <%= @profile.created_at %></p>
     </div>
-    <div class="row">
-        <div class="col-12 text-center">
+</div>
+<div class="row">
+    <div class="col-12 text-center">
+        <% if @conversation.new_record? %>
             <div id="initiate-conversation">
                 <p>Its been <%= time_ago_in_words @profile.created_at %> since you two matched.</p>
                 <%= image_tag @profile.images.first, height:'100px', width:'100px', class:'rounded-circle' %>
                 <p>Send them a message!</p>
             </div>
-
-            <div id="conversation_messages">
-            
-            </div>
+        <% end %>
+        <div id="conversation_messages">
+            <%= render partial: 'browse/messages' unless @conversation.new_record? %>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-                <%= render 'browse/new_conversation' %>
-        </div>
+</div>
+<div class="row">
+    <div class="col-12">
+            <%= render 'browse/new_conversation' %>
     </div>
+</div>
