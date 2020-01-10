@@ -5,6 +5,7 @@ class BrowseController < ApplicationController
 
         @users = Account.includes(:images_attachments).where.not(id: liked_account_ids)
         @matches = current_account.matches
+        @conversations = Conversation.includes(:messages).where("conversations.sender_id = ? OR conversations.recipient_id = ?", current_account.id, current_account.id)
     end
 
     def approve
