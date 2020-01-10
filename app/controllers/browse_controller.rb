@@ -3,9 +3,13 @@ class BrowseController < ApplicationController
         liked_account_ids = Like.where(account_id: current_account.id).pluck(:liked_account_id)
         liked_account_ids << current_account.id
 
-        @users = Account.includes(:images_attachments).where.not(id: liked_account_ids)
+        @users = Account.includes(:images_attachments).where.not(id: liked_account_ids).limit(10)
         @matches = current_account.matches
         @conversations = Conversation.includes(:messages).where("conversations.sender_id = ? OR conversations.recipient_id = ?", current_account.id, current_account.id)
+    end
+
+    def get_more_users
+        #return 10 more users using ajax
     end
 
     def approve

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_234551) do
+ActiveRecord::Schema.define(version: 2020_01_10_232246) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,12 +57,14 @@ ActiveRecord::Schema.define(version: 2020_01_08_234551) do
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.integer "account_id"
-    t.integer "liked_account_id"
+  create_table "matches", force: :cascade do |t|
+    t.integer "account_1"
+    t.integer "account_2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_likes_on_account_id"
+    t.boolean "account_1_approves"
+    t.boolean "account_2_approves"
+    t.index ["account_1"], name: "index_matches_on_account_1"
   end
 
   create_table "messages", force: :cascade do |t|
