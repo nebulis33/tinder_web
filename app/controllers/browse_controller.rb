@@ -11,12 +11,21 @@ class BrowseController < ApplicationController
 
     def approve
         account_id = params[:id]
-        logger.debug "User id for matching is #{account_id}"
-        new_like = Like.new(liked_account_id: account_id)
-        new_like.account_id = current_account.id
+        match = Match.between(account_id, current_account.id)
 
-        if new_like.save
-            @existing_like = Like.where(account_id: account_id, liked_account_id: current_account.id).exists?
+        if match.present?
+            match = match.first
+            if match.account_1 == current_account_id
+                match.account_1_approves = true
+            else
+                match.account_2_approves = true
+            end
+        else
+            match = Match.new(account_1: current_account.id, account_2: account_id, account_1_approves: true)
+        end
+
+        if match.save
+            #@existing_like = Like.where(account_id: account_id, liked_account_id: current_account.id).exists?
         else
             #issue saving like
         end
@@ -28,8 +37,9 @@ class BrowseController < ApplicationController
     def open_conversation
         id = params[:id]
         @profile = Account.find(id)
-        # likes = Like.where(account_id: current_account.id, liked_account_id: account_id)
-        # @match = likes.first if likes.size > 0
+        match = Match.between(current_account.id, id)
+        @match = match.first if match.present?
+        
         conversation = Conversation.between(id, current_account.id)
 
         @conversation = conversation.size > 0 ? conversation.first : Conversation.new

@@ -1,6 +1,10 @@
 class Match < ApplicationRecord
     validates_uniqueness_of :account_1, scope: :account_2
 
+    scope :between, -> (account_1, account_2) do
+        where("(account_1 = ? AND account_2 = ?) OR (account_2 = ? AND account_1 = ?)", account_1, account_2, account_1, account_2)
+    end
+
     scope :matches_for, -> id do
         matches = where("(account_1 = ? OR account_2 = ?)AND (account_1_approves = ? AND account_2_approves = ?)", id, id, true, true)
 
