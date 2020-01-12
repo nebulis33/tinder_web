@@ -1,10 +1,13 @@
 <% if @conversations.size > 0 %>
     <% @conversations.each do |conversation| %>
-        <% convo_account = (conversation.sender_id == current_account.id ? conversation.recipient_id : conversation.sender_id) %>
-        <% account = Account.find_by(id: convo_account) %>
-        <%= profile_thumbnail account %>
-        <%= account.first_name %>
-        <%= conversation.messages.last %>
+        <% account = get_account_from_conversation(conversation) %>
+        <%# convo_account = (conversation.sender_id == current_account.id ? conversation.recipient_id : conversation.sender_id) %>
+        <%# account = Account.find_by(id: convo_account) %>
+        <div class="open-conversation" data-id="<%= account.id %>">
+            <%= profile_thumbnail account %>
+            <%= account.first_name %>
+            <%= conversation.messages.last %>
+        </div>
     <% end %>
 <% else %>
     <p>No messages yet.  Try again soon!</p>

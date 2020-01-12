@@ -13,7 +13,7 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-matches" role="tabpanel" aria-labelledby="pills-matches-tab">
-                    <%= render "browse/matches" %>
+                    <%= render partial: "browse/matches" %>
                 </div>
                 <div class="tab-pane fade" id="pills-messages" role="tabpanel" aria-labelledby="pills-messages-tab">
                     <div class="col">
@@ -31,7 +31,6 @@
                         <div class="image-carousel" style="background-image: url('<%= url_for user.images.first %>')">
                         
                         </div>
-                        <%#= image_tag user.images.first, width: '200px' %>
                     <% end %>
                     <div class='user-details'>
                         <span class="user-name"><%= user.first_name %></span>, 31<br>
@@ -43,8 +42,15 @@
             </ul>
 
             <div id="slide-controls">
-                <span id="decline"><i class="fa fa-times fa-2x"></i></span>
-                <span id="approve"><i class="fa fa-heart fa-2x"></i></span>
+                <div id="decline" class="d-inline-block fa-stack fa-2x">
+                <i class="fa fa-circle fa-stack-2x text-white"></i>
+                <i class="fa fa-times fa-stack-1x text-danger"></i>
+                </div>
+
+                <div id="approve" class="d-inline-block fa-stack fa-2x">
+                <i class="fa fa-circle fa-stack-2x text-white"></i>
+                <i class="fa fa-heart fa-stack-1x text-success"></i>
+                </div>
             </div>
                 <div id="conversation">
                 </div>
