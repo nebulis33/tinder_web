@@ -13,6 +13,21 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :education %><br />
+    <%= f.text_field :education, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location %><br />
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

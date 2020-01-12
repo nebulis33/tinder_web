@@ -15,7 +15,7 @@ class BrowseController < ApplicationController
 
         if match.present?
             match = match.first
-            if match.account_1 == current_account_id
+            if match.account_1 == current_account.id
                 match.account_1_approves = true
             else
                 match.account_2_approves = true
@@ -37,7 +37,7 @@ class BrowseController < ApplicationController
 
         if match.present?
             match = match.first
-            if match.account_1 == current_account_id
+            if match.account_1 == current_account.id
                 match.account_1_approves = false
             else
                 match.account_2_approves = false
