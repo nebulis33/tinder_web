@@ -26,10 +26,10 @@
 .user-details {
     position: absolute;
     font-size: 18px;
-    bottom: 50px;
+    bottom: 40px;
     left: 50%;
     width: 200px;
-    margin-left: -100px;
+    margin-left: -150px;
     // text-align: left;
 
     .user-name {
@@ -52,26 +52,32 @@
     }
 }
 
-.image-carousel {
+// .image-carousel {
+//     width: 300px;
+//     height: 400px;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     margin: 0 auto;
+// }
+.carousel {
     width: 300px;
     height: 400px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0 auto;
+    margin-left: 200px;
 }
 
-// .slide:nth-of-type(1) {
-//     background: red;
-// }
-// .slide:nth-of-type(2) {
-//     background: orange;
-// }
-// .slide:nth-of-type(3) {
-//     background: green;
-// }
-// .slide:nth-of-type(4) {
-//     background: blue;
-// }
-// .slide:nth-of-type(5) {
-//     background: purple;
-// }
+.carousel-item {
+    width: 300px;
+    height: 400px;
+
+    .pimage {
+        max-width: 300px;
+        max-height: 400px;
+        min-width: 300px;
+        min-height: 400px;
+    }
+
+    // .active {
+    //     width: 300px;
+    //     height: 400px;
+    // }
+}
