@@ -6,7 +6,7 @@
 
             <div class="slide <%= 'showing' if index == 0 %>" data-id="<%= user.id %>">
                 <% num_of_pics = user.images.count %>
-                <% if num_of_pics == 1 %>
+                <% if num_of_pics < 2 %>
                     <img class="d-block pimage" src="<%= url_for user.images.first %>" >
                 <% else %>
 
